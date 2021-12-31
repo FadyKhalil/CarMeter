@@ -42,7 +42,7 @@ import static buttons.initialize.soundOff;
 import static buttons.initialize.dark;
 import static buttons.initialize.light;
 import static buttons.initialize.Switch;
-import static buttons.initialize.map;
+//import static buttons.initialize.map;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -51,6 +51,7 @@ import static buttons.initialize.player;
 import com.sun.jmx.snmp.daemon.CommunicatorServer;
 import static buttons.initialize.serialComm;
 import Communication.SerialCommunication;
+import static buttons.initialize.mapView;
 /**
  *
  * @author yasmin
@@ -300,11 +301,11 @@ public class Draw {
       
       player = new AudioPlay();
     }
-    public static void DrawMap(){
-       map=Map.GetMap();
-       map.setTranslateX(ix);
-       map.setTranslateY(iy);
-    }
+//    public static void DrawMap(){
+//
+//       mapView.setTranslateX(ix);
+//       mapView.setTranslateY(iy);
+//    }
     public static void DrawSpeedometer(){
        MultiGauge gauge = new MultiGauge();        
        pane = gauge.initGraphics();

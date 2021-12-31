@@ -11,7 +11,7 @@ import static buttons.initialize.ix;
 import static buttons.initialize.iy;
 import static buttons.initialize.len;
 import static buttons.initialize.width;
-import static buttons.initialize.map;
+import static buttons.initialize.mapView;
 import static buttons.initialize.startMode;
 import static buttons.initialize.LongitudeMode;
 import static buttons.initialize.LatitudeMode;
@@ -119,10 +119,10 @@ public class HandleButton {
                         //      System.out.println("Width in Run later="+width);
                         if (initialize.switchMode == 0) {
                             initialize.switchMode = 1;
-                            map.setTranslateX(gx);
-                            map.setTranslateY(gy);
-                            map.setFitWidth(initialize.paneWidth);
-                            map.setFitHeight(initialize.paneHight);
+                            mapView.setTranslateX(gx);
+                            mapView.setTranslateY(gy);
+                            mapView.setPrefWidth(initialize.paneWidth);
+                            mapView.setPrefHeight(initialize.paneHight);
 
                             pane.setTranslateX(ix);
                             pane.setTranslateY(iy);
@@ -130,10 +130,10 @@ public class HandleButton {
 
                         } else {
                             initialize.switchMode = 0;
-                            map.setTranslateX(ix);
-                            map.setTranslateY(iy);
-                            map.setFitWidth(initialize.mapWidth);
-                            map.setFitHeight(initialize.mapHight);
+                            mapView.setTranslateX(ix);
+                            mapView.setTranslateY(iy);
+                            mapView.setPrefWidth(initialize.mapWidth);
+                            mapView.setPrefHeight(initialize.mapHight);
 
                             pane.setTranslateX(gx);
                             pane.setTranslateY(gy);

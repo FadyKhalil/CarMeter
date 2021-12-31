@@ -18,6 +18,7 @@ import javafx.scene.paint.RadialGradient;
 import javafx.scene.text.Text;
 import javax.sound.sampled.Clip;
 import Communication.SerialCommunication;
+import com.dlsc.gmapsfx.GoogleMapView;
 
 
 
@@ -74,7 +75,7 @@ public class initialize {
       public static  ImageView view6;
       public static  ImageView view7;
       public static  ImageView view8;
-      public static ImageView map; 
+     // public static  StackPane map;
       //////////////////////////////////
       
       /*Buttons initializations*/
@@ -95,6 +96,9 @@ public class initialize {
        /* Serial communication*/
        public static SerialCommunication serialComm ;
        public static Thread thread_readLine;
+       
+       //map
+       public static GoogleMapView mapView;
        
      
 }

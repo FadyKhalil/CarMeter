@@ -42,8 +42,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+
 
 import net.sf.marineapi.nmea.parser.SentenceFactory;
 import net.sf.marineapi.nmea.sentence.GGASentence;
@@ -60,6 +59,7 @@ import static buttons.initialize.Lat;
 import static buttons.initialize.Long;
 import static buttons.initialize.LongitudeText;
 import static buttons.initialize.LatitudeText;
+import static buttons.initialize.mapView;
 
 
 
@@ -68,13 +68,9 @@ import static buttons.initialize.LatitudeText;
  *
  * @author Hanna Nabil
  */
-public class Carmeter implements MapComponentInitializedListener {
+public class Carmeter {
     
-    GoogleMapView mapView;
-    GoogleMap map;
-    MarkerOptions markerOptions;
-    Marker marker ;
-    MapOptions mapOptions;
+    
     double i = 0.0001;
     double latitude=30.0813565;double longitude=31.2383316; double speed =0;
    // TextField text_latitude;
@@ -99,66 +95,8 @@ public class Carmeter implements MapComponentInitializedListener {
     }
     
 
-    public void start(Stage primaryStage) throws Exception {
-        
-        mapView = new GoogleMapView("en","AIzaSyA9_9-iMx5eq0xn1RKXl-6FSbGYZuIUPnk");
-        mapView.setKey("AIzaSyA9_9-iMx5eq0xn1RKXl-6FSbGYZuIUPnk");
-
-    }
     //----------------------------------------------------------------------------------------------------------
-    @Override
-    public void mapInitialized() {
-//    //Set the initial properties of the map.
-//    
-//    mapOptions = new MapOptions();
-//    mapView.setKey("AIzaSyA9_9-iMx5eq0xn1RKXl-6FSbGYZuIUPnk");
-//    mapOptions.center(new LatLong(30.08056024, 31.23717248))
-//            .mapType(MapTypeIdEnum.ROADMAP)
-//            .overviewMapControl(false)
-//            .panControl(false)
-//            .rotateControl(false)
-//            .scaleControl(false)
-//            .streetViewControl(false)
-//            .zoomControl(false)
-//            .zoom(13);
-//
-//    map = mapView.createMap(mapOptions);
-//    markerOptions = new MarkerOptions();
-//    markerOptions.position( new LatLong(latitude, longitude) )
-//                .visible(Boolean.TRUE)
-//                .title("My Marker");
-//
-//    marker = new Marker( markerOptions );
-//    map.addMarker(marker);
-//    map.removeMarker(marker);
-//                    
-//    Thread t = new Thread( () -> {
-//        while (true){
-//           try {
-//               Thread.sleep(2000);
-//               Platform.runLater(() -> {
-//                   if (flag_position ==1){
-//                        //i+=0.001;
-//                        map.removeMarker(marker);
-//                       markerOptions = new MarkerOptions();
-//                       markerOptions.position( new LatLong(latitude,longitude) )
-//                        .visible(Boolean.TRUE)
-//                        .title("My Marker");
-//                         marker = new Marker( markerOptions );
-//                        map.addMarker(marker);
-//                        map.setCenter(new LatLong(latitude, longitude));
-//                        gauge.setValue(speed);
-//                   }
-//                   else {map.clearMarkers();
-//                   }
-//                       });
-//           } catch( Exception ex ) {
-//               ex.printStackTrace();
-//           }
-//    }});
-//        t.start();
-//
-}
+
   
     public static class ReadLine implements Runnable 
     {
