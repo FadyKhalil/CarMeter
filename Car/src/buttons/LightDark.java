@@ -32,6 +32,8 @@ public class LightDark {
         initialize.scene.setFill(Color.DARKSLATEGRAY);
         //ToDo Dark Map
     }
+    
+
     static public void lightMode()
     {
         Mode='l';

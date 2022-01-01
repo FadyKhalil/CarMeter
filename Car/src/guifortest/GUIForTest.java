@@ -27,6 +27,8 @@ import static buttons.initialize.dark;
 import static buttons.initialize.light;
 import static buttons.initialize.Switch;
 import static buttons.initialize.audioFilePath;
+import static buttons.initialize.ix;
+import static buttons.initialize.iy;
 //import static buttons.initialize.map;
 import static buttons.initialize.mapView;
 import static buttons.initialize.pane;
@@ -40,6 +42,7 @@ import com.dlsc.gmapsfx.javascript.object.MapTypeIdEnum;
 import com.dlsc.gmapsfx.javascript.object.Marker;
 import com.dlsc.gmapsfx.javascript.object.MarkerOptions;
 import javafx.application.Platform;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 /**
  *
@@ -67,6 +70,8 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
         
         Draw.DrawButton();
         //Draw.DrawMap();
+        mapView.setTranslateX(ix);
+        mapView.setTranslateY(iy);
         Draw.DrawSpeedometer();
         
         
@@ -111,13 +116,14 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
             .streetViewControl(false)
             .zoomControl(false)
             .zoom(13);
-
+    
+    //mapView.setBackground(Background.EMPTY.getFills());
+    
     mapOr = mapView.createMap(mapOptions);
     markerOptions = new MarkerOptions();
     markerOptions.position( new LatLong(Lat, Long) )
                 .visible(Boolean.TRUE)
                 .title("My Marker");
-
     marker = new Marker( markerOptions );
     mapOr.addMarker(marker);
     mapOr.removeMarker(marker);
@@ -127,7 +133,7 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
            try {
                Thread.sleep(2000);
                Platform.runLater(() -> {
-//                   if (flag_position ==1){
+//                   if (flag_position ==1){  problem in the flag
                         //i+=0.001;
                         mapOr.removeMarker(marker);
                        markerOptions = new MarkerOptions();

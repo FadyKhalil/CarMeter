@@ -58,7 +58,12 @@ public class HandleButton {
 
                     player.play(audioFilePath);
                 }
-                System.out.println("StartMode = " + startMode);
+                try {
+                    Thread.sleep(10);
+                    //System.out.println("StartMode = " + startMode);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(HandleButton.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
         }
