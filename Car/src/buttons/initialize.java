@@ -30,18 +30,23 @@ public class initialize {
      
    /*scene initialization*/
     public static Scene scene;
-    public static double width;
-    public static double len;
+    public static double width = 1200;
+    public static double len = 800;
     ///////////////////////////
-    
+  
     public static int switchMode=0,startMode=0,LongitudeMode=0,
-            LatitudeMode=0,gx=270,gy=150,ix=930,iy=530,paneWidth=600,
+            LatitudeMode=0,paneWidth=600,
             paneHight=600,mapWidth=250,mapHight=250,
-            soundF=0;
+            soundF=0,sceneWidth=1200,sceneHight=800;
+    public static double gw=0.75,iw=0.3125 ,gh=0.75,ih=0.3125,
+            gx=270,gy=150,ix=930,iy=530,w1offset=0.4,w2offset=0.25
+            ,h1offset=0.4,h2offset=0.25,x1offset=-0.5,x2offset=1.2
+            ,y1offset=0,y2offset=0;
+    
     
     /*Main variables initializations*/
     public static Double Speed=new Double(0);
-    public static Double Long=new Double(0);
+    public static Double Long=new Double(0); 
     public static Double Lat=new Double(0);
     ///////////////////
     /**/

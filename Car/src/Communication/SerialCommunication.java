@@ -27,6 +27,7 @@ public class SerialCommunication  {
     
      public void connect () throws Exception
     {
+        
         System.out.println("Communication.SerialCommunication.connect()");
         Enumeration<?> e = CommPortIdentifier.getPortIdentifiers();
         while (e.hasMoreElements()) {
