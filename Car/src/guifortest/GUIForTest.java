@@ -101,6 +101,7 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
 
     @Override
     public void mapInitialized() {
+
         mapOptions = new MapOptions();
         mapView.setKey("AIzaSyA9_9-iMx5eq0xn1RKXl-6FSbGYZuIUPnk");
         mapOptions.center(new LatLong(30.08056024, 31.23717248))
@@ -112,7 +113,11 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
                 .streetViewControl(false)
                 .zoomControl(false)
                 .zoom(13);
-
+        mapView.setStyle("-fx-fill: red;" +
+                        "-fx-font-weight: bold;" +
+                        "-fx-font-size: 30;" +
+                        "-fx-box-reflects: below 10px;");
+        //mapView.getBackground().getImages().add(e);
         //mapView.setBackground(Background.EMPTY.getFills());
         mapOr = mapView.createMap(mapOptions);
         markerOptions = new MarkerOptions();
