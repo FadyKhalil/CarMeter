@@ -42,6 +42,7 @@ import com.dlsc.gmapsfx.javascript.object.MapTypeIdEnum;
 import com.dlsc.gmapsfx.javascript.object.Marker;
 import com.dlsc.gmapsfx.javascript.object.MarkerOptions;
 import com.sun.prism.paint.Color;
+import static guifortest.MapInit.MapInit;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -75,8 +76,7 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        mapView = new GoogleMapView("en", "AIzaSyA9_9-iMx5eq0xn1RKXl-6FSbGYZuIUPnk");
-        mapView.setKey("AIzaSyA9_9-iMx5eq0xn1RKXl-6FSbGYZuIUPnk");
+        MapInit();
 
         Draw.DrawButton();
         //Draw.DrawMap();
@@ -159,7 +159,6 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
     public void mapInitialized() {
 
         mapOptions = new MapOptions();
-        mapView.setKey("AIzaSyA9_9-iMx5eq0xn1RKXl-6FSbGYZuIUPnk");
         mapOptions.center(new LatLong(30.08056024, 31.23717248))
                 .mapType(MapTypeIdEnum.ROADMAP)
                 .overviewMapControl(false)
