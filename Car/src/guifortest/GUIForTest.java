@@ -75,7 +75,11 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        
+        //create a java class and add your key API to use google map
+        //mapView = new GoogleMapView("en", "Add your key here");
+        //mapView.setKey("Add your key here");
+        
         MapInit();
 
         Draw.DrawButton();
