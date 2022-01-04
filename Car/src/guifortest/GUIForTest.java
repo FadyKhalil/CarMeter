@@ -41,9 +41,20 @@ import com.dlsc.gmapsfx.javascript.object.MapOptions;
 import com.dlsc.gmapsfx.javascript.object.MapTypeIdEnum;
 import com.dlsc.gmapsfx.javascript.object.Marker;
 import com.dlsc.gmapsfx.javascript.object.MarkerOptions;
+import com.sun.prism.paint.Color;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+
+
 
 /**
  *
@@ -58,9 +69,12 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
     MarkerOptions markerOptions;
     Marker marker;
     MapOptions mapOptions;
+    Process process;
+    public int x = 10;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         mapView = new GoogleMapView("en", "AIzaSyA9_9-iMx5eq0xn1RKXl-6FSbGYZuIUPnk");
         mapView.setKey("AIzaSyA9_9-iMx5eq0xn1RKXl-6FSbGYZuIUPnk");
 
@@ -84,7 +98,49 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
 
         primaryStage.show();
 
-    }
+        try {
+            process = java.lang.Runtime.getRuntime().exec("ping www.geeksforgeeks.org");
+            x = process.waitFor();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUIForTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (x == 0) {
+            System.out.println("Connection Successful, "
+                    + "Output was " + x);
+            
+        } else {
+            System.out.println("Internet Not Connected, "
+                    + "Output was " + x);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Do you want to continue");
+            alert.setTitle("Internet is not connected");
+            ButtonType yes = new ButtonType("Yes");
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(yes, no);
+            
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == yes){}
+            
+            else {
+                primaryStage.close();
+                System.exit(0);
+            }
+        }
+            
+        }
+//            while (x > 0) {
+//                try {
+//                    
+//                } catch (InterruptedException ex) {
+//                    Logger.getLogger(GUIForTest.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//            System.out.println("Connection Successful, "
+//                    + "Output was " + x);
+//            mapView.addMapInitializedListener(this);
+//        }
+
+    
 
     @Override
     public void stop() {
@@ -113,11 +169,7 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
                 .streetViewControl(false)
                 .zoomControl(false)
                 .zoom(13);
-        mapView.setStyle("-fx-fill: red;" +
-                        "-fx-font-weight: bold;" +
-                        "-fx-font-size: 30;" +
-                        "-fx-box-reflects: below 10px;");
-        //mapView.getBackground().getImages().add(e);
+
         //mapView.setBackground(Background.EMPTY.getFills());
         mapOr = mapView.createMap(mapOptions);
         markerOptions = new MarkerOptions();

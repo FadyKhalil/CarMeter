@@ -1,6 +1,7 @@
 
 package Communication;
 //import gnu.io.CommPort;
+import static buttons.initialize.serialComm;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import java.io.BufferedReader;
@@ -9,6 +10,8 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Hanna Nabil
@@ -32,7 +35,7 @@ public class SerialCommunication  {
         Enumeration<?> e = CommPortIdentifier.getPortIdentifiers();
         while (e.hasMoreElements()) {
                         CommPortIdentifier portIdentifier = (CommPortIdentifier) e.nextElement();
-                        System.out.println("gowa el while");
+                        //System.out.println("gowa el while");
                         if ( portIdentifier.isCurrentlyOwned() )
                         {
                             System.out.println("Error: Port is currently in use");
@@ -95,7 +98,10 @@ public class SerialCommunication  {
             }
             catch ( IOException e )
             {
-                e.printStackTrace();
+                serialComm.disconnect();
+                //System.out.println("The port is disconnected");
+                //serialComm.disconnect();
+                
             } 
         }
     }

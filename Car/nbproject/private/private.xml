@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/ITI_Course/Project/Car/src/Communication/SerialCommunication.java</file>
-            <file>file:/D:/ITI_Course/Project/Car/src/buttons/AudioPlay.java</file>
-            <file>file:/D:/ITI_Course/Project/Car/src/buttons/HandleButton.java</file>
-            <file>file:/D:/ITI_Course/Project/Car/src/guifortest/GUIForTest.java</file>
-            <file>file:/D:/ITI_Course/Project/Car/src/buttons/LightDark.java</file>
-            <file>file:/D:/ITI_Course/Project/Car/src/buttons/initialize.java</file>
-            <file>file:/D:/ITI_Course/Project/Car/src/getMap/Map.java</file>
-            <file>file:/D:/ITI_Course/Project/Car/src/buttons/Draw.java</file>
-            <file>file:/D:/ITI_Course/Project/Car/src/GUI/GUI.java</file>
-            <file>file:/D:/ITI_Course/Project/Car/src/Communication/Carmeter.java</file>
+            <file>file:/D:/ITI_Course/Project/CarMeter/Car/src/Communication/SerialCommunication.java</file>
+            <file>file:/D:/ITI_Course/Project/CarMeter/Car/src/buttons/HandleButton.java</file>
+            <file>file:/D:/ITI_Course/Project/CarMeter/Car/src/guifortest/GUIForTest.java</file>
+            <file>file:/D:/ITI_Course/Project/CarMeter/Car/src/Communication/Carmeter.java</file>
         </group>
     </open-files>
 </project-private>
