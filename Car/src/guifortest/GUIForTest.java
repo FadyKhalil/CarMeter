@@ -88,7 +88,7 @@ public class GUIForTest extends Application implements MapComponentInitializedLi
         mapView.setTranslateY(iy);
         Draw.DrawSpeedometer();
 
-        Group root = new Group(pane, mapView, start, stop, latitude, longtitude, soundOff, dark, light, Switch, LongitudeText, LatitudeText);
+        Group root = new Group(mapView, pane, start, stop, latitude, longtitude, soundOff, dark, light, Switch, LongitudeText, LatitudeText);
 
         scene = new Scene(root, 1200, 800, BackgroundColor);//DIMGREY
 

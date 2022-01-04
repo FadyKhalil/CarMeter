@@ -98,8 +98,8 @@ public class SerialCommunication  {
             }
             catch ( IOException e )
             {
-                serialComm.disconnect();
-                //System.out.println("The port is disconnected");
+                //serialComm.disconnect();
+                System.out.println("The port is disconnected");
                 //serialComm.disconnect();
                 
             } 

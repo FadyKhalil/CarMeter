@@ -16,10 +16,10 @@ import static buttons.initialize.gradient2;
  * @author Mostafa Adel
  */
 public class LightDark {
-    static public Color foregroundBaseColor=Color.WHITE; 
+    static public Color foregroundBaseColor=Color.WHITESMOKE;
     static public Color RadialGradient1 =Color.BLUE; 
     static public Color RadialGradient2=Color.BLACK ; 
-    static public Color BackgroundColor=Color.DARKSLATEGRAY ; 
+    static public Color BackgroundColor=Color.BLACK ; 
     static public char Mode='d';
     
     static public void darkMode()
@@ -29,7 +29,7 @@ public class LightDark {
         
         rpmGauge.setBackgroundPaint(gradient1);
         rpmGauge.setForegroundBaseColor(Color.WHITE);
-        initialize.scene.setFill(Color.DARKSLATEGRAY);
+        initialize.scene.setFill(Color.BLACK);
         //ToDo Dark Map
     }
     
@@ -39,7 +39,7 @@ public class LightDark {
         Mode='l';
         rpmGauge.setBackgroundPaint(gradient2);
         rpmGauge.setForegroundBaseColor(Color.BLACK);
-        initialize.scene.setFill(Color.WHITE);
+        initialize.scene.setFill(Color.web("FAEBD7"));
         //ToDo light Map
     }
     

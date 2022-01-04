@@ -86,6 +86,8 @@ public class HandleButton {
     static double w2;
     static double h1; //pane
     static double h2; //map
+    static double maps = 1; //map
+    static double maps2 = 0; //map
     
     public static void Handle_Buttons(Stage primaryStage) {
         Thread th1 = new Thread(() -> {
@@ -113,13 +115,13 @@ public class HandleButton {
                 len = primaryStage.getScene().getHeight();
                 
                 x1 = gx + (width - sceneWidth) / 2 + (len - sceneHight) * x1offset; //pane  //-0.5  //1.2
-                x2 = ix + (width - sceneWidth) / 2 + (len - sceneHight) * x2offset; //map   //1.4   //-0.7
+                x2 = (ix + (width - sceneWidth) / 2 + (len - sceneHight) * x2offset) * maps; //map   //1.4   //-0.7
                 y1 = gy - (len - sceneHight) / 2+ (len - sceneHight) * y1offset;  //pane    //0     //0.7
-                y2 = iy + (len - sceneHight) / 2+ (len - sceneHight) * y2offset; //map      //0     //-0.7
+                y2 = (iy + (len - sceneHight) / 2+ (len - sceneHight) * y2offset) * maps; //map      //0     //-0.7
                 w1 = gw * len + (len - sceneHight) * w1offset;                      //pane
-                w2 = iw * len + (len - sceneHight) * w2offset;//iw * len
+                w2 = (iw * len + (len - sceneHight) * w2offset) * maps + width*maps2;//iw * len
                 h1 = gh * len + (len - sceneHight) * h1offset;                      //pane
-                h2 = ih * len + (len - sceneHight) * h2offset;//ih
+                h2 = (ih * len + (len - sceneHight) * h2offset) * maps + len*maps2;//ih
      
                 pane.setTranslateX(x1);
 
@@ -228,6 +230,8 @@ public class HandleButton {
                             gx=gx+ix;  //15
                             ix=gx-ix;  //10
                             gx=gx-ix; //5
+                            maps = 0;
+                            maps2  = 1;
                          /* Swap  gy ->iy*/  
                             gy=gy+iy;  
                             iy=gy-iy;  
@@ -272,6 +276,8 @@ public class HandleButton {
                             gx=gx+ix;  
                             ix=gx-ix;  
                             gx=gx-ix;
+                            maps = 1;
+                            maps2  = 0;
                          /* Swap  gy ->iy*/  
                             gy=gy+iy;  
                             iy=gy-iy;  

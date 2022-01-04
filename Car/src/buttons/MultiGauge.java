@@ -90,7 +90,7 @@ public class MultiGauge extends Region {
             false,
             CycleMethod.NO_CYCLE,
             new Stop(0,Color.ALICEBLUE ),//ALICEBLUE or blue
-            new Stop(1, Color.WHITE));   //white or black
+            new Stop(1, Color.web("#8FBC8F")));   //white or black
         rpmGauge = GaugeBuilder.create()
                                .borderPaint(Color.HONEYDEW)    //FlORALWHITE , HONEYDEW, AQUA
                                .foregroundBaseColor(foregroundBaseColor)
@@ -106,7 +106,7 @@ public class MultiGauge extends Region {
                                .minorTickMarksVisible(true)
                                .majorTickMarkType(TickMarkType.TRIANGLE)
                                .mediumTickMarkType(TickMarkType.BOX)
-                               .title("RPM\nx100")
+                               .title("KM/HR")
                                .needleShape(NeedleShape.ROUND)     
                                .needleSize(NeedleSize.THICK)
                                .needleColor(Color.rgb(234, 67, 38))   //needle color
