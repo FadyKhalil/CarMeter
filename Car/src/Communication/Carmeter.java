@@ -16,6 +16,7 @@ import static buttons.initialize.serialComm;
 import static buttons.initialize.Speed;
 import static buttons.initialize.Lat;
 import static buttons.initialize.Long;
+import static buttons.initialize.flag_position;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -94,7 +95,9 @@ public class Carmeter {
                             System.out.println("latitude: " + Lat);
                             System.out.println(",longitude: " + Long);
                             System.out.println("GGA position: " + gga.getPosition());
+                            flag_position = 1;
                     }
+                    
                     //}
                           }
                 }

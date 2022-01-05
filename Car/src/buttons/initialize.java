@@ -32,6 +32,7 @@ public class initialize {
     public static Scene scene;
     public static double width = 1200;
     public static double len = 800;
+    public static int flag_position = 0;
     ///////////////////////////
   
     public static int switchMode=0,startMode=0,LongitudeMode=0,
