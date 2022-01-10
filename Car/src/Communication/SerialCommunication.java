@@ -10,8 +10,12 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.Enumeration;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 /**
  *
  * @author Hanna Nabil
@@ -67,6 +71,21 @@ public class SerialCommunication  {
          System.out.println("serial thread terminated");
          }
      }
+     
+     public void reportAndLogException(final Throwable t) {
+        Platform.runLater(() -> {
+            //Adding audio file here 
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("GPS Connection!!");
+            alert.setHeaderText("Your deviced is disconnected");
+            alert.setContentText("Please ! Reconnect and restart the app");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                System.exit(0);
+            }
+        });
+    }
      class SerialReader implements Runnable 
     {
         InputStream in;
@@ -98,9 +117,7 @@ public class SerialCommunication  {
             }
             catch ( IOException e )
             {
-                //serialComm.disconnect();
-                System.out.println("The port is disconnected");
-                //serialComm.disconnect();
+                reportAndLogException(e);
                 
             } 
         }
