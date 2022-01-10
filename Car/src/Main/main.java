@@ -150,7 +150,7 @@ public class main extends Application implements MapComponentInitializedListener
 
     @Override
     public void stop() {
-        System.exit(10);
+        System.exit(0);
     }
 
     /**
