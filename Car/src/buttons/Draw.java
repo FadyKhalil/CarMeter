@@ -199,8 +199,7 @@ public class Draw {
        longtitude = new ToggleButton();
       
        soundOff = new ToggleButton();
-	   
-      //setting darkmode 
+       
       dark = new ToggleButton();
       light = new ToggleButton();
       Switch = new ToggleButton();
