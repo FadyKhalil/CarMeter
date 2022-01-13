@@ -37,13 +37,16 @@ public class SerialCommunication  {
         
         System.out.println("Communication.SerialCommunication.connect()");
         Enumeration<?> e = CommPortIdentifier.getPortIdentifiers();
+        
         while (e.hasMoreElements()) {
                         CommPortIdentifier portIdentifier = (CommPortIdentifier) e.nextElement();
+                        
                         //System.out.println("gowa el while");
                         if ( portIdentifier.isCurrentlyOwned() )
                         {
                             System.out.println("Error: Port is currently in use");
                         }
+                        
                         else{
                             if (portIdentifier.getPortType() == CommPortIdentifier.PORT_SERIAL) {//only serial ports will be handled
                                     portName = portIdentifier.getName();
@@ -60,8 +63,9 @@ public class SerialCommunication  {
                             }
                         }                   
                                 
-			}    
-    }
+			}
+        }
+    
      
     
      public void disconnect(){

@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Hanna Nabil
+ * @author Fady
  */
 public class Carmeter {
     

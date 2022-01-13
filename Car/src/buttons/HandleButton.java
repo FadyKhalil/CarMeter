@@ -69,6 +69,10 @@ import static buttons.initialize.x1offset;
 import static buttons.initialize.x2offset;
 import static buttons.initialize.y1offset;
 import static buttons.initialize.y2offset;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 
@@ -77,9 +81,9 @@ import javafx.scene.text.FontPosture;
  * @author yasmin
  */
 public class HandleButton {
-    
-    static double x1 ; //pane
-    static double x2 ; //map
+
+    static double x1; //pane
+    static double x2; //map
     static double y1;  //pane
     static double y2;  //map
     static double w1;  //pane
@@ -88,7 +92,7 @@ public class HandleButton {
     static double h2; //map
     static double maps = 1; //map
     static double maps2 = 0; //map
-    
+
     public static void Handle_Buttons(Stage primaryStage) {
         Thread th1 = new Thread(() -> {
             while (true) {
@@ -113,16 +117,16 @@ public class HandleButton {
 
                 width = primaryStage.getScene().getWidth();
                 len = primaryStage.getScene().getHeight();
-                
+
                 x1 = gx + (width - sceneWidth) / 2 + (len - sceneHight) * x1offset; //pane  //-0.5  //1.2
                 x2 = (ix + (width - sceneWidth) / 2 + (len - sceneHight) * x2offset) * maps; //map   //1.4   //-0.7
-                y1 = gy - (len - sceneHight) / 2+ (len - sceneHight) * y1offset;  //pane    //0     //0.7
-                y2 = (iy + (len - sceneHight) / 2+ (len - sceneHight) * y2offset) * maps; //map      //0     //-0.7
+                y1 = gy - (len - sceneHight) / 2 + (len - sceneHight) * y1offset;  //pane    //0     //0.7
+                y2 = (iy + (len - sceneHight) / 2 + (len - sceneHight) * y2offset) * maps; //map      //0     //-0.7
                 w1 = gw * len + (len - sceneHight) * w1offset;                      //pane
-                w2 = (iw * len + (len - sceneHight) * w2offset) * maps + width*maps2;//iw * len
+                w2 = (iw * len + (len - sceneHight) * w2offset) * maps + width * maps2;//iw * len
                 h1 = gh * len + (len - sceneHight) * h1offset;                      //pane
-                h2 = (ih * len + (len - sceneHight) * h2offset) * maps + len*maps2;//ih
-     
+                h2 = (ih * len + (len - sceneHight) * h2offset) * maps + len * maps2;//ih
+
                 pane.setTranslateX(x1);
 
                 start.setTranslateX(20 + (width - sceneWidth) / 2 - (len - sceneHight) * 1.75);
@@ -142,14 +146,14 @@ public class HandleButton {
                 latitude.setTranslateY(620 + (len - sceneHight) / 2 - (len - sceneHight) * 0.3);
                 LatitudeText.setTranslateY(680 + (len - sceneHight) / 2);
                 longtitude.setTranslateY(700 + (len - sceneHight) / 2);
-                LongitudeText.setTranslateY(750 + (len - sceneHight) / 2 +(len - sceneHight) * 0.3);
+                LongitudeText.setTranslateY(750 + (len - sceneHight) / 2 + (len - sceneHight) * 0.3);
                 soundOff.setTranslateY(25 + (len - sceneHight) / 2 - (len - sceneHight) * 0.5);
                 Switch.setTranslateY(90 + (len - sceneHight) / 2 - (len - sceneHight) * 0.1);
                 light.setTranslateY(25 + (len - sceneHight) / 2 - (len - sceneHight) * 0.5);
                 dark.setTranslateY(25 + (len - sceneHight) / 2 - (len - sceneHight) * 0.5);
                 pane.setTranslateY(y1);
                 mapView.setTranslateY(y2);
-                
+
                 if (startMode == 1) {
                     rpmGauge.setValue(Speed);
 
@@ -157,21 +161,21 @@ public class HandleButton {
                     rpmGauge.setValue(0);
                 }
                 if (LatitudeMode == 1) {
-                    LatitudeText.setText(String.format("%.3f",Lat));
+                    LatitudeText.setText(String.format("%.3f", Lat));
                 } else {
                     LatitudeText.setText("");
                 }
                 if (LongitudeMode == 1) {
-                    LongitudeText.setText(String.format("%.3f",Long));
+                    LongitudeText.setText(String.format("%.3f", Long));
                 } else {
                     LongitudeText.setText("");
                 }
                 Platform.runLater(() -> {
                     /*changes in scene must be here*/
-                    
-                     pane.setPrefSize(w1, h1);
-                     mapView.setPrefWidth(w2);
-                     mapView.setPrefHeight(h2);
+
+                    pane.setPrefSize(w1, h1);
+                    mapView.setPrefWidth(w2);
+                    mapView.setPrefHeight(h2);
 
                     view.setFitHeight(0.05 * len + (len - sceneHight) * 0.25);
                     view2.setFitHeight(0.05 * len + (len - sceneHight) * 0.25);
@@ -190,17 +194,31 @@ public class HandleButton {
                     view6.setFitWidth(0.05 * len + (len - sceneHight) * 0.25);
                     view7.setFitWidth(0.05 * len + (len - sceneHight) * 0.25);
                     view8.setFitWidth(0.06 * len + (len - sceneHight) * 0.25);
-                    
-                    LongitudeText.setFont(Font.font("Helvetica", FontPosture.ITALIC, 36+ (len - sceneHight) * 0.25));
-                    LatitudeText.setFont(Font.font("Helvetica", FontPosture.ITALIC, 36+ (len - sceneHight) * 0.25));
+
+                    LongitudeText.setFont(Font.font("Helvetica", FontPosture.ITALIC, 36 + (len - sceneHight) * 0.25));
+                    LatitudeText.setFont(Font.font("Helvetica", FontPosture.ITALIC, 36 + (len - sceneHight) * 0.25));
 
                     start.setOnAction((ActionEvent event) -> {
                         try {
                             serialComm.connect();//contains thread
                         } catch (Exception ex) {
-                            System.out.println("Didn't find any port");
+                            //                            System.out.println("Didn't find any port");
                             //Logger.getLogger(Carmeter.class.getName()).log(Level.SEVERE, null, ex);
                             //System.out.println("gowa el catch");
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setContentText("Please Connect to a port and start your application");
+                            alert.setTitle("No Port Found");
+                            ButtonType yes = new ButtonType("Retry");
+                            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+                            alert.getButtonTypes().setAll(yes, no);
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.get() == yes) {
+                                serialComm.disconnect();
+                            } else {
+                                primaryStage.close();
+                                System.exit(0);
+                            }
                         }
                         if (thread_readLine.isAlive() == false) {
                             thread_readLine.start();
@@ -210,10 +228,10 @@ public class HandleButton {
                         startMode = 1;
                     });
                     stop.setOnAction((ActionEvent event) -> {
-                        
+
                         serialComm.disconnect();
-                        if (thread_readLine.isAlive()==true){
-                             thread_readLine.suspend();
+                        if (thread_readLine.isAlive() == true) {
+                            thread_readLine.suspend();
                         }
 
                         startMode = 0;
@@ -226,42 +244,40 @@ public class HandleButton {
                         //      System.out.println("Width in Run later="+width);
                         if (initialize.switchMode == 0) {
                             initialize.switchMode = 1;
-                             /*Swap gx->ix*///gx=10 , ix=5
-                            gx=gx+ix;  //15
-                            ix=gx-ix;  //10
-                            gx=gx-ix; //5
+                            /*Swap gx->ix*///gx=10 , ix=5
+                            gx = gx + ix;  //15
+                            ix = gx - ix;  //10
+                            gx = gx - ix; //5
                             maps = 0;
-                            maps2  = 1;
-                         /* Swap  gy ->iy*/  
-                            gy=gy+iy;  
-                            iy=gy-iy;  
-                            gy=gy-iy;
-                          /* Swap gw ->iw*/  
-                            gw=gw+iw;  
-                            iw=gw-iw;  
-                            gw=gw-iw;
-                           /* Swap gh ->ih*/ 
-                            gh=gh+ih;  
-                            ih=gh-ih;  
-                            gh=gh-ih;
-                            
-                           /* Swap w1offset ->w2offset*/ 
-                            w1offset=w1offset+w2offset;  
-                            w2offset=w1offset-w2offset;  
-                            w1offset=w1offset-w2offset;
-                            
-                            
-                           /* Swap h1offset ->w2offset*/ 
-                            h1offset=h1offset+h2offset;  
-                            h2offset=h1offset-h2offset;  
-                            h1offset=h1offset-h2offset;
-                           
-                            
-                            /* Swap x1offset ->x2offset*/ 
-                            x1offset=1.2;  
-                            x2offset=-0.7;  
-                            y1offset=0.9;
-                            y2offset=-0.7; 
+                            maps2 = 1;
+                            /* Swap  gy ->iy*/
+                            gy = gy + iy;
+                            iy = gy - iy;
+                            gy = gy - iy;
+                            /* Swap gw ->iw*/
+                            gw = gw + iw;
+                            iw = gw - iw;
+                            gw = gw - iw;
+                            /* Swap gh ->ih*/
+                            gh = gh + ih;
+                            ih = gh - ih;
+                            gh = gh - ih;
+
+                            /* Swap w1offset ->w2offset*/
+                            w1offset = w1offset + w2offset;
+                            w2offset = w1offset - w2offset;
+                            w1offset = w1offset - w2offset;
+
+                            /* Swap h1offset ->w2offset*/
+                            h1offset = h1offset + h2offset;
+                            h2offset = h1offset - h2offset;
+                            h1offset = h1offset - h2offset;
+
+                            /* Swap x1offset ->x2offset*/
+                            x1offset = 1.2;
+                            x2offset = -0.7;
+                            y1offset = 0.9;
+                            y2offset = -0.7;
 //                            mapView.setTranslateX(gx);
 //                            mapView.setTranslateY(gy);
 //                            mapView.setPrefWidth(initialize.paneWidth);
@@ -270,45 +286,41 @@ public class HandleButton {
 //                            pane.setTranslateX(ix);
 //                            pane.setTranslateY(iy);
 //                            pane.setPrefSize(initialize.mapWidth, initialize.mapHight);
-
                         } else {
                             initialize.switchMode = 0;
-                            gx=gx+ix;  
-                            ix=gx-ix;  
-                            gx=gx-ix;
+                            gx = gx + ix;
+                            ix = gx - ix;
+                            gx = gx - ix;
                             maps = 1;
-                            maps2  = 0;
-                         /* Swap  gy ->iy*/  
-                            gy=gy+iy;  
-                            iy=gy-iy;  
-                            gy=gy-iy;
-                          /* Swap gw ->iw*/  
-                            gw=gw+iw;  
-                            iw=gw-iw;  
-                            gw=gw-iw;
-                           /* Swap w1offset ->ih*/ 
-                           gh=gh+ih;  
-                            ih=gh-ih;  
-                            gh=gh-ih;
-                            
-                            
-                           /* Swap w1offset ->w2offset*/ 
-                           w1offset=w1offset+w2offset;  
-                            w2offset=w1offset-w2offset;  
-                            w1offset=w1offset-w2offset;
-                            
-                            
-                           /* Swap h1offset ->w2offset*/ 
-                            h1offset=h1offset+h2offset;  
-                            h2offset=h1offset-h2offset;  
-                            h1offset=h1offset-h2offset;
-                           
-                            
-                            /* Swap x1offset ->x2offset*/ 
-                            x1offset=-0.5;  
-                            x2offset=1.2;  
-                            y1offset=0; //pane
-                            y2offset=0; //map
+                            maps2 = 0;
+                            /* Swap  gy ->iy*/
+                            gy = gy + iy;
+                            iy = gy - iy;
+                            gy = gy - iy;
+                            /* Swap gw ->iw*/
+                            gw = gw + iw;
+                            iw = gw - iw;
+                            gw = gw - iw;
+                            /* Swap w1offset ->ih*/
+                            gh = gh + ih;
+                            ih = gh - ih;
+                            gh = gh - ih;
+
+                            /* Swap w1offset ->w2offset*/
+                            w1offset = w1offset + w2offset;
+                            w2offset = w1offset - w2offset;
+                            w1offset = w1offset - w2offset;
+
+                            /* Swap h1offset ->w2offset*/
+                            h1offset = h1offset + h2offset;
+                            h2offset = h1offset - h2offset;
+                            h1offset = h1offset - h2offset;
+
+                            /* Swap x1offset ->x2offset*/
+                            x1offset = -0.5;
+                            x2offset = 1.2;
+                            y1offset = 0; //pane
+                            y2offset = 0; //map
 //                            mapView.setTranslateX(ix);
 //                            mapView.setTranslateY(iy);
 //                            mapView.setPrefWidth(initialize.mapWidth);
@@ -317,7 +329,6 @@ public class HandleButton {
 //                            pane.setTranslateX(gx);
 //                            pane.setTranslateY(gy);
 //                            pane.setPrefSize(initialize.paneWidth, initialize.paneHight);
-
                         }
                     });
                     dark.setOnAction(new EventHandler<ActionEvent>() {
