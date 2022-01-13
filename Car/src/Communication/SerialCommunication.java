@@ -18,7 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 /**
  *
- * @author Hanna Nabil
+ * @author Fady
  */
 public class SerialCommunication  {
     BufferedReader buf;
